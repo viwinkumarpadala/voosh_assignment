@@ -84,7 +84,7 @@ npm install
 nodemon index.js
 
 
-## Dot env file:
+## Dot env file for the backend folder:
  DB_URL=
 
  PORT=
