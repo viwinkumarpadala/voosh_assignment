@@ -33,20 +33,18 @@ router.post('/add-user', async (req, res) => {
     
         await user.save();
 
-        const Token = jwt.sign({ userId: user.username }, 'your_secret_key', { expiresIn: '1h' });
+        const Token = jwt.sign({ userId: user.username, phno: user.phoneNumber }, 'your_secret_key', { expiresIn: 15 * 24 * 60 * 60 * 1000 });
 
-        const refreshToken = jwt.sign({ userId: user.username }, 'your_second_secret_key', { expiresIn: '24h' });
-        
         const options = {
             expires: new Date(
-                Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000
+                Date.now() +15* 24 * 60 * 60 * 1000
             ),
             secure: true,
             sameSite: 'none',
             httpOnly: true,
         };
 
-        res.status(201).cookie("token",Token,options).json({ message: 'User created successfully', Token: Token, refreshToken: refreshToken });
+        res.status(201).cookie("token",Token,options).json({ message: 'User created successfully', Token: Token});
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Server error' });
@@ -70,19 +68,18 @@ router.post('/login-user', async (req, res) => {
             return res.status(401).json({ message: 'Invalid credentials' });
         }
 
-        const Token = jwt.sign({ userId: user.username}, 'your_secret_key', { expiresIn: '1h' });
+        const Token = jwt.sign({ userId: user.username, phno: user.phoneNumber }, 'your_secret_key', { expiresIn: 15* 24 * 60 * 60 * 1000 });
 
-        const refreshToken = jwt.sign({ userId: user.username }, 'your_refresh_token_secret', { expiresIn: '24h' });
         const options = {
             expires: new Date(
-                Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000
+                Date.now() + 15* 24 * 60 * 60 * 1000
             ),
             secure: true,
             sameSite: 'none',
             httpOnly: true,
         };
 
-        res.status(200).cookie("token", Token, options).json({message:"User logged in succesfully!", Token: Token, refreshToken: refreshToken });
+        res.status(200).cookie("token", Token, options).json({message:"User logged in succesfully!", Token: Token });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Server error' }); 
@@ -100,6 +97,7 @@ router.get('/logout',(req,res)=>{
             success: true,
             message: "Logged Out",
         });
+        console.log('logged out')
     }
     catch (error) {
         console.error(error);
@@ -107,21 +105,5 @@ router.get('/logout',(req,res)=>{
     }
 })
 
-router.post('/refresh-token', (req, res) => {
-    try {
-        const refreshToken = req.body.refreshToken;
-        if (!refreshToken) return res.sendStatus(401);
-
-        jwt.verify(refreshToken, 'your_refresh_token_secret', (err, user) => {
-            if (err) return res.sendStatus(403);
-
-            const accessToken = generateAccessToken({ userId: user.userId });
-            res.json({ accessToken });
-        });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Server error' });
-    }
-});
 
 module.exports = router;

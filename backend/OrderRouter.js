@@ -9,17 +9,14 @@ function verifyToken(req, res, next) {
     // const token = req.headers['authorization'];
     const { token } = req.cookies;
 
+    console.log(req.cookies)
+    // console.log(req)
+
     if (!token) {
         return res.status(401).json({ message: 'Unauthorized: Missing token' });
     }
 
     try {
-        // const decoded = jwt.verify(token, 'your_secret_key');
-        // req.userId = decoded.userId;
-        // next();
-        // if (!token) {
-        //     return next(new ErrorHandler("Please Login to access this resource", 401));
-        // }
 
         const decoded = jwt.verify(token, "your_secret_key");
 
@@ -53,7 +50,7 @@ router.post('/add-order', verifyToken, async (req, res) => {
         });
         
         await order.save();
-        return res.status(201).json({ message: 'Order added successfully' }); 
+        return res.status(201).json({ message: 'Order added successfully' });  
     } catch (error) {
         console.error(error);
         return res.status(500).json({ message: 'Server error' });
@@ -63,14 +60,14 @@ router.post('/add-order', verifyToken, async (req, res) => {
 // View Orders Route
 router.get('/get-order', verifyToken, async (req, res) => {
     try {
-        const userId = req.body.userId;
-        console.log(req.body)
+        const userId = req.query.userId; // Use req.query to get parameters from GET request
+        console.log(userId);
         const user = await User.findOne({ username: userId });
 
         if (!user) {
-            return res.status(201).json({ message: 'User does not exist!' }); 
+            return res.status(404).json({ message: 'User does not exist!' });
         }
-        const orders = await Order.find({ username:userId });
+        const orders = await Order.find({ username: userId });
 
         return res.status(200).json({ orders });
     } catch (error) {
@@ -78,5 +75,23 @@ router.get('/get-order', verifyToken, async (req, res) => {
         return res.status(500).json({ message: 'Server error' });
     }
 });
+
+router.delete('/delete/:id', verifyToken, async (req, res) => {
+    try {
+        const orderId = req.params.id;
+        console.log(orderId);
+
+        // Find the order by ID and delete it
+        await Order.findByIdAndDelete(orderId);
+
+        // Send a success response
+        res.status(200).json({ message: 'Order deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting order:', error);
+        // Send an error response if deletion fails
+        res.status(500).json({ message: 'Failed to delete order' });
+    }
+});
+
 
 module.exports = router;
