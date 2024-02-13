@@ -78,8 +78,8 @@ nodemon index.js
 
 
 ## dot env file:
-### DB_URL=
-### PORT=
+DB_URL=
+PORT=
 
 ## Note:
 ### If you want to use this locally change the urls to your local urls first and then use it.
