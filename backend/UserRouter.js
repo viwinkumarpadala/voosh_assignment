@@ -20,7 +20,7 @@ router.post('/add-user', async (req, res) => {
         }
 
         const check2 = await User.findOne({ phoneNumber: phoneNumber });
-
+        console.log(check2);
         if (check2) {
             return res.status(500).json({ message: 'Phone number already exists, check your Phone number' });
         }
