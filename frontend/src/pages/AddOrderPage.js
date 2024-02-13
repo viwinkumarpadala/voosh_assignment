@@ -6,6 +6,7 @@ import AddOrderForm from '../components/AddOrderForm';
 import { ToastContainer } from 'react-toastify';
 
 export default function AddOrderPage() {
+  // Use usestate hook to handle the state
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -16,7 +17,7 @@ export default function AddOrderPage() {
 
     return () => clearTimeout(timeout);
   }, []);
-
+  // return the function
   return (
     <div>
       <NavBar />

@@ -8,7 +8,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function NavBar() {
-
+    // handle logout
     const handleLogout = async () => {
         try {
             const response = await fetch('https://voosh-assignment-backend-tynu.onrender.com/user/logout', {

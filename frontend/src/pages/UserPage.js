@@ -1,35 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import NavBar from '../components/NavBar';
 import { jwtDecode } from 'jwt-decode'; // Import jwtDecode correctly
-import Cookies from 'js-cookie';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function UserPage() {
+  // Use usestate hook to handle the state
   const [userData, setUserData] = useState(null);
-
+  // Get the userdata using the token
   useEffect(() => {
-    // Assuming your JWT token is stored in cookies
-    const token = localStorage.getItem('token');
-
-    if (token) {
-      // Decode the JWT token
-      const decoded = jwtDecode(token);
-      setUserData(decoded); // Set user data extracted from the token
+    try {
+      const token = localStorage.getItem('token');
+      if (token) {
+        const decoded = jwtDecode(token);
+        setUserData(decoded);
+      }
+    } catch (error) {
+      console.error('Error decoding token:', error);
+      toast.error('Invalid token');
+      localStorage.removeItem('token');
+      window.location.reload();
     }
   }, []);
-
+  // define the styles
   const userCardStyle = {
-    border: '2px solid #333', // Dark border
+    border: '2px solid #333', 
     borderRadius: '10px',
     padding: '20px',
-    margin: '20px auto', // Center the card
-    maxWidth: '500px', // Limit card width
-    transition: 'all 0.5s ease', // Add transition effect
+    margin: '20px auto', 
+    maxWidth: '500px', 
+    transition: 'all 0.5s ease', 
   };
 
   const userDataStyle = {
-    fontSize: '2 rem', // Increase font size
+    fontSize: '2 rem',
   };
-
+ // return the function
   return (
     <div>
       <NavBar />
@@ -43,6 +49,7 @@ export default function UserPage() {
           </div>
         )}
       </div>
+      <ToastContainer />
     </div>
   );
 }

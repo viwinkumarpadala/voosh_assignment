@@ -7,10 +7,11 @@ import { useState, useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 
 export default function LoginPage() {
+  // Use usestate hook to handle the state
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Set a delay to show the card after a certain time (for demonstration)
+    // Set a delay to show the card after a certain time 
     const timeout = setTimeout(() => {
       setIsVisible(true);
     }, 500);

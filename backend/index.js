@@ -1,3 +1,4 @@
+//  Import required libraries
 const express = require('express');
 const mongoose = require('mongoose');
 const UserRouter = require('./UserRouter');
@@ -5,19 +6,20 @@ const OrderRouter = require('./OrderRouter');
 const dotenv= require('dotenv')
 const cookieParser=require('cookie-parser')
 const cors= require('cors')
-
 const app = express();
 
+//  Use dotenv variables
 dotenv.config();
+
 const DB_URL=process.env.DB_URL
 const PORT = process.env.PORT || 3000;
  
+// Using middlewares 
 app.use(express.json());
 app.use(cookieParser());
-// app.use(cors({ origin:"https://voosh-assignment-viwin.vercel.app/",credentials:true}));
+
 const allowedOrigins = ['https://voosh-assignment-viwin.vercel.app'];
 
-// Configure CORS options
 const corsOptions = {
     origin: function (origin, callback) {
         if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
@@ -26,14 +28,11 @@ const corsOptions = {
             callback(new Error('Not allowed by CORS'));
         }
     },
-    credentials: true // Enable credentials
+    credentials: true 
 };
-
-// Enable CORS middleware
 app.use(cors(corsOptions));
 
-// Enable CORS middleware
-app.use(cors(corsOptions));
+// Connect to Mongodb database
 mongoose.connect(DB_URL, {
 }).then(() => {
     console.log('Connected to MongoDB');
@@ -41,10 +40,11 @@ mongoose.connect(DB_URL, {
     console.error('MongoDB connection error:', error);
 });
 
+// Defining routers
 app.use('/user', UserRouter);
 app.use('/order', OrderRouter);
 
-
+//  listening to port 5000
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });

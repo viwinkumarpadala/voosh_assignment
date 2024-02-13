@@ -6,10 +6,11 @@ import { jwtDecode } from 'jwt-decode';
 import { ToastContainer, toast } from 'react-toastify'; // Import toast from react-toastify
 
 export default function GetOrdersPage() {
+  // Use usestate hook to handle the state
   const [orders, setOrders] = useState([]);
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  // Get the userdata using the token
   useEffect(() => {
     try {
       const token = localStorage.getItem('token');
@@ -28,13 +29,13 @@ export default function GetOrdersPage() {
     }
   }, []);
 
-
+  // fetching orders
   useEffect(() => {
     if (userData) {
       fetchOrders();
     }
   }, [userData]);
-
+ 
   const fetchOrders = async () => {
     try {
       setLoading(true); // Set loading to true when fetching orders
@@ -46,6 +47,7 @@ export default function GetOrdersPage() {
     } catch (error) {
       const errorMessage = error.response.data.message;
       if (errorMessage === 'Unauthorized: Missing token' || errorMessage === 'Unauthorized: Invalid token') {
+        // if access is unauthorized or invalid then clear the token and reload the page, so it will go to /
         localStorage.removeItem('token');
         window.location.reload();
       } else {
@@ -72,6 +74,7 @@ export default function GetOrdersPage() {
       console.error('Error deleting order:', error);
       const errorMessage = error.response.data.message;
       if (errorMessage === 'Unauthorized: Missing token' || errorMessage === 'Unauthorized: Invalid token') {
+        // if access is unauthorized or invalid then clear the token and reload the page, so it will go to /
         localStorage.removeItem('token');
         window.location.reload();
       } else {
@@ -79,7 +82,7 @@ export default function GetOrdersPage() {
       }
     }
   };
-
+ // return the function
   return (
     <div>
       <NavBar />

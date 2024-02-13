@@ -7,6 +7,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function SignUpForm() {
+    // Use usestate hook to handle the state
     const [formData, setFormData] = useState({
         name: '',
         phoneNumber: '',
@@ -14,11 +15,11 @@ export default function SignUpForm() {
     });
 
     const [message, setMessage] = useState('');
-
+    // form data handler
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
-
+    //submit handler
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -44,7 +45,7 @@ export default function SignUpForm() {
         }
     };
 
-
+    //return the function
     return (
         <>
             <Form onSubmit={handleSubmit}>

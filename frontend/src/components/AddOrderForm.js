@@ -7,10 +7,11 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function AddOrderForm() {
+    // Use usestate hook to handle the state
     const [phoneNumber, setPhoneNumber] = useState('');
     const [phoneNumberError, setPhoneNumberError] = useState('');
     const [userData, setUserData] = useState(null);
-
+    // get the user data from jwt token
     useEffect(() => {
         try {
             const token = localStorage.getItem('token');
@@ -26,7 +27,7 @@ export default function AddOrderForm() {
             window.location.reload();
         }
     }, []);
-
+    // phone number validate
     const handlePhoneNumberChange = (event) => {
         const { value } = event.target;
         setPhoneNumber(value);
@@ -38,7 +39,7 @@ export default function AddOrderForm() {
             setPhoneNumberError('');
         }
     };
-
+    // handle submit
     const handleSubmit = async (event) => {
 
         event.preventDefault();
@@ -74,11 +75,11 @@ export default function AddOrderForm() {
         }
     };
 
-
+ 
     if (!userData) {
         return <div>Loading...</div>;
     }
-
+    // return the function
     return (
         <div>
             <Form onSubmit={handleSubmit}>
