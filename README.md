@@ -57,7 +57,8 @@ https://voosh-assignment-backend-tynu.onrender.com/user/logout
 
 ### Sample output:
 ![alt text](image-2.png)
-# Getting started:
+
+# Getting started with the client:
 
 ## Clone the application: 
 git clone https://github.com/viwinkumarpadala/voosh_assignment.git
@@ -68,9 +69,13 @@ cd voosh_assignment
 cd frontend
 ## Install dependencies
 npm install
-## Start the server
+## Start the client
 npm start
 
+# Getting started with Server:
+
+## Change the directory:
+cd voosh_assignment
 ## Open a new terminal and change directory to backend:
 cd backend
 ## Install dependencies
