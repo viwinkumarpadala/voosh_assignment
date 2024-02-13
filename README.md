@@ -33,12 +33,6 @@ https://voosh-assignment-backend-tynu.onrender.com/user/login-user
 ### sample output:
 ![alt text](image-1.png)
 
-## Sample Route for logout user:
-https://voosh-assignment-backend-tynu.onrender.com/user/logout
-
-### sample output:
-![alt text](image-2.png)
-
 ## sample Route to add order
 https://voosh-assignment-backend-tynu.onrender.com/order/add-order
 
@@ -58,6 +52,11 @@ https://voosh-assignment-backend-tynu.onrender.com/order/get-order?userId=viw
 ### sample output:
 ![alt text](image-4.png)
 
+## Sample Route for logout user:
+https://voosh-assignment-backend-tynu.onrender.com/user/logout
+
+### sample output:
+![alt text](image-2.png)
 # Getting started:
 
 ### Clone the application: 
