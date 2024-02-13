@@ -26,8 +26,7 @@ https://voosh-assignment-backend-tynu.onrender.com/user/add-user
 https://voosh-assignment-backend-tynu.onrender.com/user/login-user
 
 ### sample input:
-{  
-    "phoneNumber":"5565758569",
+{  "phoneNumber":"5565758569",
     "password":"Wewin"
 }
 
@@ -39,14 +38,12 @@ https://voosh-assignment-backend-tynu.onrender.com/user/logout
 
 ### sample output:
 ![alt text](image-2.png)
-https://voosh-assignment-backend-tynu.onrender.com
 
 ## sample Route to add order
 https://voosh-assignment-backend-tynu.onrender.com/order/add-order
 
 ### sample input:
-{  
-   "userId":"viw",
+{  "userId":"viw",
    "subTotal":100,
    "phoneNumber":"1234567890"
 }
