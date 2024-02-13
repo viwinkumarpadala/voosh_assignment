@@ -78,8 +78,8 @@ nodemon index.js
 
 
 ## dot env file:
-### DB_URL=mongodb+srv://viwin:viwin@cluster0.cx8tefq.mongodb.net/?retryWrites=true&w=majority
-### PORT=5000
+### DB_URL=
+### PORT=
 
 ## Note:
 ### If you want to use this locally change the urls to your local urls first and then use it.
