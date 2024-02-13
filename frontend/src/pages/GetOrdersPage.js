@@ -38,7 +38,7 @@ export default function GetOrdersPage() {
   const fetchOrders = async () => {
     try {
       setLoading(true); // Set loading to true when fetching orders
-      const response = await axios.get('http://localhost:5000/order/get-order', {
+      const response = await axios.get('https://voosh-assignment-backend-tynu.onrender.com/order/get-order', {
         params: { userId: userData.userId },
         withCredentials: true
       });
@@ -61,7 +61,7 @@ export default function GetOrdersPage() {
   const handleDeleteOrder = async (orderId) => {
     try {
       // Send a DELETE request to delete the order
-      await axios.delete(`http://localhost:5000/order/delete/${orderId}`, { withCredentials: true });
+      await axios.delete(`https://voosh-assignment-backend-tynu.onrender.com/order/delete/${orderId}`, { withCredentials: true });
 
       // Update the orders state by filtering out the deleted order
       setOrders(prevOrders => prevOrders.filter(order => order._id !== orderId));

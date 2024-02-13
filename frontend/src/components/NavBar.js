@@ -11,7 +11,7 @@ function NavBar() {
 
     const handleLogout = async () => {
         try {
-            const response = await fetch('http://localhost:5000/user/logout', {
+            const response = await fetch('https://voosh-assignment-backend-tynu.onrender.com/user/logout', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

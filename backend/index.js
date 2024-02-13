@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3000;
  
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ origin:"http://localhost:3000",credentials:true}));
+app.use(cors({ origin:"https://voosh-assignment-viwin.vercel.app/",credentials:true}));
 
 mongoose.connect(DB_URL, {
 }).then(() => {

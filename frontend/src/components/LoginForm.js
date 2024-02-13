@@ -19,13 +19,13 @@ export default function LoginForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5000/user/login-user', formData, { withCredentials: true });
+            const response = await axios.post('https://voosh-assignment-backend-tynu.onrender.com/user/login-user', formData, { withCredentials: true });
             const { message, Token } = response.data;
             console.log(response.data)
             toast.success(message);
             if (response.data.Token) {
-                
-                localStorage.setItem('token',Token)
+
+                localStorage.setItem('token', Token)
                 window.location.reload()
                 console.log(localStorage.getItem('token'));
             }

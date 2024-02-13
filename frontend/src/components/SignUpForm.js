@@ -30,7 +30,7 @@ export default function SignUpForm() {
                 return;
             }
 
-            const response = await axios.post('http://localhost:5000/user/add-user', formData, { withCredentials: true });
+            const response = await axios.post('https://voosh-assignment-backend-tynu.onrender.com/user/add-user', formData, { withCredentials: true });
             setMessage(response.data.message);
             console.log(response.data)
 
@@ -40,7 +40,7 @@ export default function SignUpForm() {
             }
         } catch (error) {
             console.error(error.response.data);
-            toast.error(error.response.data.message, { autoClose: 2000 }); 
+            toast.error(error.response.data.message, { autoClose: 2000 });
         }
     };
 

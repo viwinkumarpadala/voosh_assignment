@@ -11,7 +11,7 @@ export default function AddOrderForm() {
     const [phoneNumberError, setPhoneNumberError] = useState('');
     const [userData, setUserData] = useState(null);
 
-      useEffect(() => {
+    useEffect(() => {
         try {
             const token = localStorage.getItem('token');
             if (token) {
@@ -43,13 +43,13 @@ export default function AddOrderForm() {
 
         event.preventDefault();
         try {
-            const phoneNumberPattern = /^\d{10}$/; 
+            const phoneNumberPattern = /^\d{10}$/;
             if (!phoneNumberPattern.test(event.target.phoneNumber.value)) {
                 toast.error('Please enter a valid 10-digit phone number');
                 return;
             }
-            
-            const response = await axios.post('http://localhost:5000/order/add-order', {
+
+            const response = await axios.post('https://voosh-assignment-backend-tynu.onrender.com/order/add-order', {
                 subTotal: event.target.subTotal.value,
                 phoneNumber: event.target.phoneNumber.value,
                 userId: userData.userId
