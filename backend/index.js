@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3000;
  
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors());
+app.use(cors({ origin:"https://voosh-assignment-backend-8vg2.onrender.com",credentials:true}));
 
 mongoose.connect(DB_URL, {
 }).then(() => {
