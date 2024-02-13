@@ -6,7 +6,7 @@ function NavBarlogin() {
         <>
             <Navbar bg="dark" data-bs-theme="dark">
                 <Container>
-                    <Navbar.Brand href="#home">VooshAssignment</Navbar.Brand>
+                    <Navbar.Brand href="#home">Voosh-Assignment</Navbar.Brand>
                 </Container>
             </Navbar>
             <br />
