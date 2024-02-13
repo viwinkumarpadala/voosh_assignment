@@ -85,9 +85,6 @@ nodemon index.js
  PORT=
 
 
-## Note:
-### If you want to use this locally, then change the urls to your local urls first and then use it.
-
 ## With this the application is ready with all the requirements
 
 
