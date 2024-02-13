@@ -1,7 +1,7 @@
 # Voosh Assignment (NodeJS Assignment)
 
 ## Tech Stacks used:
-### Backend- NodeJS, MongoDB
+### Backend- NodeJS & ExpressJS, MongoDB
 ### Frontend- ReactJS
 
 ## Hosted link for the frontend:
