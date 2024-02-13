@@ -60,7 +60,7 @@ router.post('/add-order', verifyToken, async (req, res) => {
 // View Orders Route
 router.get('/get-order', verifyToken, async (req, res) => {
     try {
-        const userId = req.query.userId; // Use req.query to get parameters from GET request
+        const userId = req.query.userId;
         console.log(userId);
         const user = await User.findOne({ username: userId });
 
