@@ -3,7 +3,7 @@ import NavBar from '../components/NavBar';
 import axios from 'axios';
 import { Table, Button, Spinner } from 'react-bootstrap';
 import { jwtDecode } from 'jwt-decode';
-import { ToastContainer, toast } from 'react-toastify'; // Import toast from react-toastify
+ 
 
 export default function GetOrdersPage() {
   // Use usestate hook to handle the state
@@ -20,7 +20,6 @@ export default function GetOrdersPage() {
       }
     } catch (error) {
       console.error('Error decoding token:', error);
-      toast.error('Invalid token');
       localStorage.removeItem('token');
       window.location.reload();
     } finally {
@@ -51,7 +50,7 @@ export default function GetOrdersPage() {
         localStorage.removeItem('token');
         window.location.reload();
       } else {
-        toast.error(errorMessage, { autoClose: 1000 });
+        console.error(error);
       }
       console.error(error);
     } finally {
@@ -68,8 +67,8 @@ export default function GetOrdersPage() {
       // Update the orders state by filtering out the deleted order
       setOrders(prevOrders => prevOrders.filter(order => order._id !== orderId));
 
-      // Show success toast notification
-      toast.success('Order deleted successfully');
+     
+     
     } catch (error) {
       console.error('Error deleting order:', error);
       const errorMessage = error.response.data.message;
@@ -78,7 +77,7 @@ export default function GetOrdersPage() {
         localStorage.removeItem('token');
         window.location.reload();
       } else {
-        toast.error(errorMessage, { autoClose: 1000 });
+        console.error(error);
       }
     }
   };
@@ -127,7 +126,7 @@ export default function GetOrdersPage() {
           </>
         )}
       </div>
-      <ToastContainer />
+      
     </div>
   );
 }
