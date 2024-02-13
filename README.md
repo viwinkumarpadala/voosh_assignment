@@ -59,9 +59,11 @@ https://voosh-assignment-backend-tynu.onrender.com/user/logout
 ![alt text](image-2.png)
 # Getting started:
 
-### Clone the application: 
+## Clone the application: 
 git clone https://github.com/viwinkumarpadala/voosh_assignment.git
 
+## Change the directory:
+cd voosh_assignment
 ## Open terminal Change directory to the frontend:
 cd frontend
 ## Install dependencies
