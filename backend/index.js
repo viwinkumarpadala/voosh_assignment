@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(cookieParser());
 
-const allowedOrigins = ['https://voosh-assignment-viwin.vercel.app','http://localhost:3000];
+const allowedOrigins = ['https://voosh-assignment-viwin.vercel.app','http://localhost:3000'];
 
 const corsOptions = {
     origin: function (origin, callback) {
