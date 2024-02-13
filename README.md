@@ -14,70 +14,70 @@ https://voosh-assignment-backend-tynu.onrender.com
 ## Sample Route for sign up user:
 https://voosh-assignment-backend-tynu.onrender.com/user/add-user
 
-### sample input:
+### Sample input:
 {   "name":"viw",
     "phoneNumber":"5565758569",
     "password":"Wewin"
 }
-### sample output:
+### Sample output:
 ![alt text](image.png)
 
 ## Sample Route for login user:
 https://voosh-assignment-backend-tynu.onrender.com/user/login-user
 
-### sample input:
+### Sample input:
 {  "phoneNumber":"5565758569",
     "password":"Wewin"
 }
 
-### sample output:
+### Sample output:
 ![alt text](image-1.png)
 
-## sample Route to add order
+## Sample Route to add order
 https://voosh-assignment-backend-tynu.onrender.com/order/add-order
 
-### sample input:
+### Sample input:
 {  "userId":"viw",
    "subTotal":100,
    "phoneNumber":"1234567890"
 }
 
-### sample output:
+### Sample output:
 ![alt text](image-3.png)
 
-## sample Route to get orders:
+## Sample Route to get orders:
 
 https://voosh-assignment-backend-tynu.onrender.com/order/get-order?userId=viw
 
-### sample output:
+### Sample output:
 ![alt text](image-4.png)
 
 ## Sample Route for logout user:
 https://voosh-assignment-backend-tynu.onrender.com/user/logout
 
-### sample output:
+### Sample output:
 ![alt text](image-2.png)
 # Getting started:
 
 ### Clone the application: 
 git clone https://github.com/viwinkumarpadala/voosh_assignment.git
 
-## open terminal Change directory to the frontend:
+## Open terminal Change directory to the frontend:
 cd frontend
-## install dependencies
+## Install dependencies
 npm install
-## start the server
+## Start the server
 npm start
 
-## open a new terminal and change directory to backend:
+## Open a new terminal and change directory to backend:
 cd backend
-## install dependencies
+## Install dependencies
 npm install
-## start the server
+## Start the server
 nodemon index.js
 
 
-## dot env file:
+## Dot env file:
  DB_URL=
 
  PORT=
